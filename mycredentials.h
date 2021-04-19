@@ -9,8 +9,8 @@
 class MyCredentials: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(std::string getUser READ getUser)
-    Q_PROPERTY(std::string getUser READ getPassword)
+    Q_PROPERTY(std::string* getUser READ getUser WRITE setUser)
+    Q_PROPERTY(std::string* getUser READ getPassword WRITE setPassword)
 
         public:
         explicit MyCredentials(std::string* user, std::string* password, QObject *parent = nullptr): m_user(user),m_password(password) {};
