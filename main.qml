@@ -16,9 +16,9 @@ ApplicationWindow {
 //          UserName: myCredentials.getUser
 //          Password: myCredentials.getPassword
 
-            // Works, but is obviously not my goal
-            UserName: myCredentials.getUser
-            Password: myCredentials.getPassword
+            // Works, but not wanted
+            UserName: "myCredentials.getUser"
+            Password: "myCredentials.getPassword"
         }
     }
 
