@@ -35,7 +35,7 @@ else()
     add_executable(MySimpleTableView
       main.cpp
       qml.qrc
-      mylistmodel.h
+      mycredentials.h
     )
 endif()
 

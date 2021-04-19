@@ -8,17 +8,14 @@ Page {
     height: 400
 
     header: Label {
-        text: qsTr("Databases")
+        text: qsTr("Credentials")
         font.pixelSize: Qt.application.font.pixelSize * 2
         padding: 10
     }
 
-    DBTableView{
+    CredentialsTableView{
         anchors.fill: parent
-        model: dbConfigModel
-
-
-
+        model: credentialsModel
     }
 
 }

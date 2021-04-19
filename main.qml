@@ -8,10 +8,17 @@ ApplicationWindow {
     title: qsTr("Tabs")
 
     ListModel {
-        id: dbConfigModel
-        ListElement {
-            m_dbUserName: myList.getUser
-            m_dbPassword: "backend.dbConfig().password"
+        id: credentialsModel
+       ListElement {
+
+            // Thats my goal: I want to get member variables of the ContextProperty myList
+            // Why this error?: ListElement: cannot use script for property value
+//          UserName: myCredentials.getUser
+//          Password: myCredentials.getPassword
+
+            // Works, but is obviously not my goal
+            UserName: myCredentials.getUser
+            Password: myCredentials.getPassword
         }
     }
 
@@ -20,13 +27,7 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1Form {
-        }
-
-        Page2Form {
-        }
-
-        DataBasesView{
+        CredentialsView{
             id: dataBasesView
 
         }
@@ -37,13 +38,7 @@ ApplicationWindow {
         currentIndex: swipeView.currentIndex
 
         TabButton {
-            text: qsTr("Page 1")
-        }
-        TabButton {
-            text: qsTr("Page 2")
-        }
-        TabButton {
-            text: qsTr("Databases")
+            text: qsTr("Credentials")
         }
     }
 }

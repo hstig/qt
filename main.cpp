@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "mylistmodel.h"
+#include "mycredentials.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,10 +10,20 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    MyListModel myList;
+    std::string* myUser;
+    std::string user("usr");
+    myUser = &user;
+
+    std::string* myPassword;
+    std::string password("psw");
+    myPassword = &password;
+
+    MyCredentials myCredentials(myUser, myPassword);
+
+    myCredentials.print();
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty(QStringLiteral("myList"), &myList);
+    engine.rootContext()->setContextProperty(QStringLiteral("myCredentials"), &myCredentials);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
