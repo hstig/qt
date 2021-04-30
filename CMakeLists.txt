@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(MySimpleTableView LANGUAGES CXX)
+set(MYSQL_LIBS "-L/usr/lib/x86_64-linux-gnu -lmysqlclient -lpthread -lz -lm -lrt -lssl -lcrypto -ldl -lresolv -lcurl")
+
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -24,22 +26,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Sql Quick REQUIRED)
 
 if(ANDROID)
     add_library(MySimpleTableView SHARED
       main.cpp
       qml.qrc
+      mbDatabase.hpp
+      sqlcredentialsmodel.cpp
     )
 else()
     add_executable(MySimpleTableView
       main.cpp
       qml.qrc
-      mycredentials.h
+      mbDatabase.hpp
+      sqlcredentialsmodel.cpp
     )
 endif()
 
 target_compile_definitions(MySimpleTableView
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(MySimpleTableView
-  PRIVATE Qt5::Core Qt5::Quick)
+  PRIVATE Qt5::Core Qt5::Quick Qt5::Sql ${MYSQL_LIBS})

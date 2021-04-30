@@ -1,17 +1,24 @@
-import QtQuick 2.9
-import QtQuick.Controls 1.4
-import QtQuick.Layouts 1.3
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+
+import io.qt.examples.chattutorial 1.0
 
 TableView {
     id: credentialsTableView
-    TableViewColumn {
-        role: "UserName"
-        title: "User Name"
-        width: credentialsTableView.width / 2
-    }
-    TableViewColumn {
-        role: "Password"
-        title: "Password"
-        width: credentialsTableView.width / 2
+    property alias credentialsTableView: credentialsTableView
+    anchors.fill: parent
+    columnSpacing: 2
+    rowSpacing: 2
+    clip: true
+
+    model: SqlCredentialsModel{}
+    delegate: Rectangle {
+        color: "lightblue"
+        implicitWidth: lbl_tableCell.width
+        implicitHeight: lbl_tableCell.height
+        Label {
+            id: lbl_tableCell
+            text: display
+        }
     }
 }
