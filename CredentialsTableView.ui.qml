@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import io.qt.examples.chattutorial 1.0
+import credentials 1.0
 
 TableView {
     id: credentialsTableView
@@ -22,3 +22,9 @@ TableView {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

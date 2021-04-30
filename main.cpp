@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     connectToDatabase();
 
     QQmlApplicationEngine engine;
-    qmlRegisterType<SqlCredentialsModel>("io.qt.examples.chattutorial", 1, 0, "SqlCredentialsModel");
+    qmlRegisterType<SqlCredentialsModel>("credentials", 1, 0, "SqlCredentialsModel");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
