@@ -9,7 +9,6 @@ ApplicationWindow {
 
     SwipeView {
         id: swipeView
-        anchors.fill: parent
 
         CredentialsView{
             id: credentialsView

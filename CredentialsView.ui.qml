@@ -12,8 +12,41 @@ Page {
         padding: 10
     }
 
-    CredentialsTableView{
-        anchors.fill: parent
-    }
+    ColumnLayout{
+        RowLayout{
+            Rectangle{
+                color: "lightgray"
 
+                implicitWidth: page_Credentials.width/2
+                implicitHeight: lbl_cell_user.implicitHeight
+                Label{
+                    id: lbl_cell_user
+                    text: "user"
+                    anchors.centerIn: parent
+                }
+            }
+            Rectangle{
+                color: "lightgray"
+
+                implicitWidth: page_Credentials.width/2
+                implicitHeight: lbl_cell_password.height
+                Label{
+                    id: lbl_cell_password
+                    text: "pass"
+                    anchors.centerIn: parent
+                }
+            }
+        }
+        RowLayout{
+            CredentialsTableView{
+                model: SqlCredentialsModel{}
+
+                implicitWidth: page_Credentials.width
+                implicitHeight: page_Credentials.height
+            }
+        }
+    }
 }
+
+
+

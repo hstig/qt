@@ -4,21 +4,19 @@ import QtQuick.Controls 2.12
 import credentials 1.0
 
 TableView {
-    id: credentialsTableView
-    property alias credentialsTableView: credentialsTableView
-    anchors.fill: parent
-    columnSpacing: 2
-    rowSpacing: 2
+    id: dbTableView
+    columnSpacing: 5
+    rowSpacing: 1
     clip: true
 
-    model: SqlCredentialsModel{}
-    delegate: Rectangle {
+    delegate: Rectangle{
+    implicitWidth: dbTableView.width/2;
+    implicitHeight: lb_cell.height;
         color: "lightblue"
-        implicitWidth: lbl_tableCell.width
-        implicitHeight: lbl_tableCell.height
         Label {
-            id: lbl_tableCell
+            id: lb_cell
             text: display
+            anchors.centerIn: parent
         }
     }
 }
